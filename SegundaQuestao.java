@@ -4,14 +4,15 @@ import org.jgrapht.io.GmlImporter;
 import org.jgrapht.io.EdgeProvider;
 import org.jgrapht.io.ImportException;
 import org.jgrapht.io.VertexProvider;
-
 import org.jgrapht.alg.cycle.HierholzerEulerianCycle;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ImportSimpleGraphGML {
-	// Importa Grafo Simples no formato GML com r�tulo nos v�rtices e nas arestas
+	/** Importa Grafo Simples no formato GML, verifica se este possui um caminho euleriano,
+	 * se possuir, retornara a representaçao textual deste caminho.
+	 * @param args main
+	 */
 
 	public static void main(String[] args) {
 		VertexProvider<Object> vp1 =
@@ -25,13 +26,17 @@ public class ImportSimpleGraphGML {
 		Graph<Object, RelationshipEdge> graphgml = new SimpleGraph<>(RelationshipEdge.class);
 
 		try {
+			//Insira o caminho para o arquivo gml a ser importado
 			gmlImporter.importGraph(graphgml, ImportGraph.readFile("/home/joaop/TeoriaGraf/rede.gml"));
 		} catch (ImportException e) {
 			throw new RuntimeException(e);
 		}
 
-		System.out.println("\nGrafo importado do arquivo GML: ");
+		System.out.println(caminho(graphgml));
 
+	}
+
+	private static String caminho(Graph<Object, RelationshipEdge> graphgml) {
 		HierholzerEulerianCycle<Object, RelationshipEdge> graph = new HierholzerEulerianCycle<>();
 
 		if (graph.isEulerian(graphgml)) {
@@ -39,7 +44,6 @@ public class ImportSimpleGraphGML {
 			//Conversao do caminho gerado para array e posteriormente para ArrayList, possibilitando modificaçao.
 			Object[] path = graph.getEulerianCycle(graphgml).getVertexList().toArray();
 			ArrayList<Object> list = new ArrayList<>(Arrays.asList(path));
-
 
 			//Adiciona o passo no final e remove do inicio.
 			for (int i = 1; i < list.size(); i++) {
@@ -58,12 +62,11 @@ public class ImportSimpleGraphGML {
 				saida.append(aList.toString()).append(" >> ");
 			}
 
-			System.out.println(saida);
+			return "Rota:" + System.lineSeparator() + saida;
 
-		} else {
-			System.out.println("Não é possível encontrar uma rota neste grafo");
-		}
+		} else return "Não é possível encontrar uma rota neste grafo";
 	}
 
 }
+
 
