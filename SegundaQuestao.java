@@ -39,7 +39,12 @@ public class ImportSimpleGraphGML {
 		System.out.println(caminho(graphgml));
 
 	}
-
+	/**
+	 * Verifica se este possui um caminho euleriano,
+	 * se possuir, retornara a representaçao textual deste caminho.
+	 * @param graphgml - grafo a ser verificado
+	 * @return String represetação textual do caminho, se não poussir retorna uma mensagem
+	 */
 	private static String caminho(Graph<Object, RelationshipEdge> graphgml) {
 		HierholzerEulerianCycle<Object, RelationshipEdge> graph = new HierholzerEulerianCycle<>();
 
