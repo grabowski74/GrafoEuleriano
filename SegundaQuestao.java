@@ -8,11 +8,15 @@ import org.jgrapht.alg.cycle.HierholzerEulerianCycle;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/** Importa Grafo Simples no formato GML, verifica se este possui um caminho euleriano,
+ * se possuir, retornara a representaçao textual deste caminho.
+ * @author Rafael Dantas 
+ * @author Thayanne Sousa
+ * @author Gabriel Guimarães
+ * @author João Pedro
+ */
 public class ImportSimpleGraphGML {
-	/** Importa Grafo Simples no formato GML, verifica se este possui um caminho euleriano,
-	 * se possuir, retornara a representaçao textual deste caminho.
-	 * @param args main
-	 */
+	
 
 	public static void main(String[] args) {
 		VertexProvider<Object> vp1 =
