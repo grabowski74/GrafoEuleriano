@@ -13,7 +13,7 @@ import java.util.Arrays;
  * @author Rafael Dantas 
  * @author Thayanne Sousa
  * @author Gabriel Guimarães
- * @author João Pedro
+ * @author Joao Pedro
  */
 public class ImportSimpleGraphGML {
 	
@@ -41,9 +41,9 @@ public class ImportSimpleGraphGML {
 	}
 	/**
 	 * Verifica se este possui um caminho euleriano,
-	 * se possuir, retornara a representaçao textual deste caminho.
+	 * se possuir, retornara a representacao textual deste caminho.
 	 * @param graphgml - grafo a ser verificado
-	 * @return String represetação textual do caminho, se não poussir retorna uma mensagem
+	 * @return String represetacao textual do caminho, se nao poussir retorna uma mensagem
 	 */
 	private static String caminho(Graph<Object, RelationshipEdge> graphgml) {
 		HierholzerEulerianCycle<Object, RelationshipEdge> graph = new HierholzerEulerianCycle<>();
@@ -73,7 +73,7 @@ public class ImportSimpleGraphGML {
 
 			return "Rota:" + System.lineSeparator() + saida;
 
-		} else return "Não é possível encontrar uma rota neste grafo";
+		} else return "Nao e possivel encontrar uma rota neste grafo";
 	}
 
 }
